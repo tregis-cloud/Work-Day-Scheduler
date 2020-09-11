@@ -4,8 +4,7 @@ $(document).ready(function () {
   var date =
     today.getMonth() + 1 + "-" + today.getDate() + "-" + today.getFullYear();
   var time = today.getHours() + ":" + today.getMinutes();
-  console.log(date);
-  console.log(time);
+
   var DayEl = $("#currentDay");
   DayEl.text(date);
 
@@ -19,6 +18,7 @@ $(document).ready(function () {
   var threeDescription = $("#threeText");
   var fourDescription = $("#fourText");
   var fiveDescription = $("#fiveText");
+  var schedulerTimeSlot = $(".time-block");
 
   //Setting up listener for time-block id = 9
   $(".saveBtn").on("click", function () {
@@ -27,7 +27,6 @@ $(document).ready(function () {
   });
 
   nineDescription.val(localStorage.getItem("9AM"));
-  console.log($(this));
 
   //Setting up listener for time-block id = 10
   $(".saveBtn").on("click", function () {
@@ -36,7 +35,6 @@ $(document).ready(function () {
   });
 
   tenDescription.val(localStorage.getItem("10AM"));
-  console.log($(".time-block"));
 
   //   //Setting up listener for time-block id = 11
   $(".saveBtn").on("click", function () {
@@ -88,10 +86,19 @@ $(document).ready(function () {
   });
   fiveDescription.val(localStorage.getItem("5PM"));
 
-  //   //Default background-color is green
-  //   if (time >= "9:00" && time < "10:00") {
-  //     nineDescription.addClass(".past");
-  //   } else if (time > "10:00") {
-  //     nineDescription.attr("sytle", "background-color:gray");
-  //   }
+  //Setting  background-colors
+  setInterval(function () {
+    for (var i = 0; i < schedulerTimeSlot.length; i++) {
+      if (time >= schedulerTimeSlot[i] && time < schedulerTimeSlot[i] + 1) {
+        $(".time-block").removeClass("past noClass").addClass("present");
+      } else if (
+        time > schedulerTimeSlot[i] &&
+        time > schedulerTimeSlot[i] + 1
+      ) {
+        $(".time-block").removeClass("current noClass").addClass("pass");
+      } else {
+        $(".time-block").removeClass("future noClass").addClass("past");
+      }
+    }
+  }, 1000);
 });
