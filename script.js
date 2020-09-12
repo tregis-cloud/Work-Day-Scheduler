@@ -1,10 +1,7 @@
 $(document).ready(function () {
-  //Setting up header with current date
-  var today = new Date();
-  var date =
-    today.getMonth() + 1 + "-" + today.getDate() + "-" + today.getFullYear();
-  var time = today.getHours() + ":" + today.getMinutes();
-
+  // Setting up header with current date
+  var date = moment().format("MMM Do YYYY");
+  var timeNow = 9;
   var DayEl = $("#currentDay");
   DayEl.text(date);
 
@@ -87,17 +84,35 @@ $(document).ready(function () {
   fiveDescription.val(localStorage.getItem("5PM"));
 
   //Setting  background-colors
+  var nine = $("#9");
+  var ten = $("#10");
+  var eleven = $("#11");
+  var twelve = $("#12");
+  var one = $("#1");
+  var two = $("#2");
+  var three = $("#3");
+  var four = $("#4");
+  var five = $("#5");
+  nine = 9;
+  ten = 10;
+  eleven = 11;
+  twelve = 12;
+  one = 1;
+  two = 2;
+  three = 3;
+  four = 4;
+  five = 5;
+  var array = [nine, ten, eleven, twelve, one, two, three, four, five];
+  //var timeNow = moment().hour();
+
   setInterval(function () {
-    for (var i = 0; i < schedulerTimeSlot.length; i++) {
-      if (time >= schedulerTimeSlot[i] && time < schedulerTimeSlot[i] + 1) {
-        $(".time-block").removeClass("past noClass").addClass("present");
-      } else if (
-        time > schedulerTimeSlot[i] &&
-        time > schedulerTimeSlot[i] + 1
-      ) {
-        $(".time-block").removeClass("current noClass").addClass("pass");
-      } else {
-        $(".time-block").removeClass("future noClass").addClass("past");
+    for (var i = 0; i < array.length; i++) {
+      if (timeNow < array[i]) {
+        $(".time-block").removeClass("past noClass").addClass("future");
+      } else if (timeNow == array[i]) {
+        $(".time-block").removeClass("future noClass").addClass("present");
+      } else if (timeNow > array[i]) {
+        $(".time-block").removeClass("present noClass").addClass("past");
       }
     }
   }, 1000);
