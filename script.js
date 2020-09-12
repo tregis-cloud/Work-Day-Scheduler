@@ -83,4 +83,70 @@ $(document).ready(function () {
   fiveDescription.val(localStorage.getItem("5PM"));
 
   //Placeholder for color logic
+
+  if (timeNow < 9) {
+    $(".nine").removeClass("past noClass").addClass("future");
+  } else if (timeNow == 9) {
+    $(".nine").removeClass("future noClass").addClass("present");
+  } else {
+    $(".nine").removeClass("current noClass").addClass("past");
+  }
+  if (timeNow < 10) {
+    $(".ten").removeClass("past noClass").addClass("future");
+  } else if (timeNow == 10) {
+    $(".ten").removeClass("future noClass").addClass("present");
+  } else {
+    $(".ten").removeClass("current noClass").addClass("past");
+  }
+  if (timeNow < 11) {
+    $(".eleven").removeClass("past noClass").addClass("future");
+  } else if (timeNow == 11) {
+    $(".eleven").removeClass("future noClass").addClass("present");
+  } else {
+    $(".eleven").removeClass("current noClass").addClass("past");
+  }
+
+  if (timeNow < 12) {
+    $(".twelve").removeClass("past noClass").addClass("future");
+  } else if (timeNow == 11) {
+    $(".twelve").removeClass("future noClass").addClass("present");
+  } else {
+    $(".twelve").removeClass("current noClass").addClass("past");
+  }
+  if (timeNow < 13) {
+    $(".one").removeClass("past noClass").addClass("future");
+  } else if (timeNow == 13) {
+    $(".one").removeClass("future noClass").addClass("present");
+  } else {
+    $(".one").removeClass("current noClass").addClass("past");
+  }
+  if (timeNow < 14) {
+    $(".two").removeClass("past noClass").addClass("future");
+  } else if (timeNow == 14) {
+    $(".two").removeClass("future noClass").addClass("present");
+  } else {
+    $(".two").removeClass("current noClass").addClass("past");
+  }
+
+  if (timeNow < 15) {
+    $(".three").removeClass("past noClass").addClass("future");
+  } else if (timeNow == 15) {
+    $(".three").removeClass("future noClass").addClass("present");
+  } else {
+    $(".three").removeClass("current noClass").addClass("past");
+  }
+  if (timeNow < 16) {
+    $(".four").removeClass("past noClass").addClass("future");
+  } else if (timeNow == 16) {
+    $(".four").removeClass("future noClass").addClass("present");
+  } else {
+    $(".four").removeClass("current noClass").addClass("past");
+  }
+  if (timeNow < 17) {
+    $(".five").removeClass("past noClass").addClass("future");
+  } else if (timeNow == 17) {
+    $(".five").removeClass("future noClass").addClass("present");
+  } else {
+    $(".five").removeClass("current noClass").addClass("past");
+  }
 });
